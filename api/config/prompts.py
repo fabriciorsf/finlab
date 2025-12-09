@@ -46,7 +46,11 @@ The content includes information about:
    - C: Mixed fundamentals, higher risk, uncertain growth
    - D: Poor fundamentals, high risk, declining prospects
 
-3. **Confidence Score**: Rate your confidence in the analysis from 0-100
+3. **Confidence Score**: Rate your confidence (0.0 to 1.0) in this analysis based on:
+   - Completeness and clarity of the financial data
+   - Strength of the company's competitive position
+   - Consistency of business model and trends
+   - Quality of management disclosure
 
 4. **Key Strengths**: Identify exactly 3 main competitive advantages or positive factors
 
