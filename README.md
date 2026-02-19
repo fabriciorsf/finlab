@@ -1,4 +1,5 @@
 # FinLab
+> Part of the curriculum for the [AI Engineering Specialization](https://deveficiente.com/oferta-20-especializacao-engenharia-ia) — Dev + Eficiente
 
 A financial research assistant that combines SEC filings, news sentiment, and hybrid vector search to generate investment analysis using LLMs.
 
