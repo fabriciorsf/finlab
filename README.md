@@ -1,4 +1,5 @@
 # FinLab
+
 > Part of the curriculum for the [AI Engineering Specialization](https://deveficiente.com/oferta-20-especializacao-engenharia-ia) — Dev + Eficiente
 
 A financial research assistant that combines SEC filings, news sentiment, and hybrid vector search to generate investment analysis using LLMs.
@@ -7,7 +8,7 @@ A financial research assistant that combines SEC filings, news sentiment, and hy
 
 The system ingests data from two sources — EDGAR (SEC filings) and Yahoo Finance news — chunks and embeds them using a hybrid approach (dense + sparse + ColBERT), and stores everything in Qdrant. At query time, it retrieves the most relevant chunks and passes them to an LLM for analysis.
 
-```
+```mono
 Data Sources → Chunking → Embeddings → Qdrant
                                           ↓
 User Query → Hybrid Search → LLM Analysis → Response
@@ -24,7 +25,7 @@ User Query → Hybrid Search → LLM Analysis → Response
 
 ## Project Structure
 
-```
+```mono
 ├── api/                  # FastAPI app
 │   ├── routers/          # search, rag, agent endpoints
 │   ├── services/         # search, rag, agent, embeddings logic
@@ -42,39 +43,45 @@ User Query → Hybrid Search → LLM Analysis → Response
 
 ## Setup
 
-**1. Install dependencies**
+### **1. Install dependencies**
+
 ```bash
 pip install uv
 uv sync
 ```
 
-**2. Configure environment**
+### **2. Configure environment**
+
 ```bash
 cp .env.example .env
 # Fill in: QDRANT_URL, QDRANT_API_KEY, GROQ_API_KEY
 ```
 
-**3. Create the Qdrant collection and indexes**
+### **3. Create the Qdrant collection and indexes**
+
 ```bash
 python ingestion/create-collection.py
 python ingestion/create_indexes.py
 ```
 
-**4. Ingest data**
+### **4. Ingest data**
+
 ```bash
 python ingestion/ingestion.py      # SEC filings (AAPL 10-K + 10-Q)
 python ingestion/news_ingestion.py # Recent news from Yahoo Finance
 ```
 
-**5. Start the API**
+### **5. Start the API**
+
 ```bash
-cd api && uvicorn main:app --reload
+cd api
+uvicorn main:app --reload
 ```
 
 ## API Endpoints
 
 | Endpoint | Description |
-|---|---|
+| --- | --- |
 | `POST /search` | Hybrid semantic search over financial documents |
 | `POST /rag` | RAG: search + LLM answer |
 | `POST /agent` | Full analysis: fundamental + momentum + sentiment + final recommendation |
